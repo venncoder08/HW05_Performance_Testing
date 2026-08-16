@@ -1,0 +1,15 @@
+# SUT được clone riêng, có .git của chính nó (tránh embedded repo)
+eshop-sut/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# JMeter
+jmeter.log
+*.jmx.bak
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
