@@ -1,0 +1,3 @@
+code,type,discount_value,min_order_amount,max_uses_per_user,total_amount_toi_thieu,ghi_chu
+BIGBUY,fixed,50000,500000,1,500001,Dùng cho luồng chính
+VIP100,fixed,100000,300000,2,300001,Dùng cho luồng chính

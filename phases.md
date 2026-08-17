@@ -94,17 +94,27 @@ Mỗi iteration = 9 request, think-time 1–3s → ~0.56 rps/VU.
 
 ## Giai đoạn 2 — Dữ liệu test
 
-| Bước | Việc | Review gì |
-| --- | --- | --- |
-| 2.1 | Script seed (Node): ~500 user qua `POST /api/register` + ~200 product | Chạy được, idempotent |
-| 2.2 | Sinh `data/users.csv`, `data/products.csv`, `data/coupons.csv` | Đủ số dòng; coupon chỉ loại `fixed` |
-| 2.3 | Ghi checklist reset lockout: **restart backend → seed lại → mới chạy test** | Nắm đúng thứ tự bắt buộc |
+**Trạng thái: ĐÃ XONG** (2026-08-16). Chi tiết đầy đủ: `docs/02-test-data.md`.
 
-| File CSV | Cột | Ghi chú |
-| --- | --- | --- |
-| `users.csv` | `email,password` | ~500 dòng, seed qua `POST /api/register` |
-| `products.csv` | `product_id,name,price` | 5 dòng seed sẵn → bơm thêm ~200 |
-| `coupons.csv` | `code,min_order_amount` | Chỉ `BIGBUY`, `VIP100` (loại `fixed`) |
+| Bước | Việc | Review gì | Kết quả |
+| --- | --- | --- | --- |
+| 2.1 | `scripts/seed-data.js`: 500 user + 30 user lockout qua `POST /api/register`, 199 sản phẩm qua `POST /api/products` | Chạy được, idempotent | Xong — 532 user, 204 sản phẩm trong DB |
+| 2.2 | Sinh 4 file CSV bằng **ID thật** đọc lại từ API | Đủ số dòng; coupon chỉ loại `fixed` | Xong — 500 / 30 / 204 / 2 dòng |
+| 2.3 | `scripts/verify-seed.js`: chạy đủ 9 request Flow A với dòng đầu + dòng cuối | Phải in `TẤT CẢ ĐẠT` | Xong — 9/9 request HTTP 200 ở cả hai biên |
+| 2.4 | Checklist reset: **restart backend → seed lại → verify → mới chạy test** | Nắm đúng thứ tự bắt buộc | Ghi ở `docs/02-test-data.md` §2 |
+
+| File CSV | Dòng | Cột | Ghi chú |
+| --- | --- | --- | --- |
+| `data/users.csv` | 500 | `user_id,email,password,ho_ten,dia_chi,so_dien_thoai` | Tên/địa chỉ tiếng Việt có dấu, SĐT đầu số thật; `user_id` là ID thật từ `GET /api/admin/users` |
+| `data/users_lockout.csv` | 30 | `user_id,email,password_dung,password_sai,ho_ten` | File **riêng** cho negative test FR-02, tránh làm khóa 500 user luồng chính |
+| `data/products.csv` | 204 | `product_id,ten_san_pham,gia,category_id,ten_category,kieu_price_tra_ve` | Hàng thật đang bán ở VN; cột cuối dự đoán kiểu `price` do `server.js:162` đổi sang string khi id chẵn |
+| `data/coupons.csv` | 2 | `code,type,discount_value,min_order_amount,max_uses_per_user,total_amount_toi_thieu,ghi_chu` | Chỉ `BIGBUY`, `VIP100` (`fixed`); loại `SAVE10`/`EXPIRED` |
+
+Mọi giá sản phẩm **≥ 600.000 ₫** vì `server.js:379` so sánh **chặt** `total_amount > min_order_amount`
+— đơn đúng 500.000 ₫ vẫn bị `BIGBUY` từ chối. Nhờ vậy mọi dòng `products.csv` dùng được ở `quantity = 1`.
+
+Lockout đã kiểm chứng bằng thực nghiệm: sai 2 lần → mật khẩu đúng vẫn trả **HTTP 403**, xác nhận
+`server.js:54` khóa sau **2** lần chứ không phải 3 như FR-02 mô tả.
 
 **Commit:** `data: add seed script and CSV datasets for data-driven flow`
 
