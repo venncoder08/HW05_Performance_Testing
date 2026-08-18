@@ -1,0 +1,7 @@
+# AI Critique — HW05 Performance Testing on EShop
+
+AI hữu ích nhất ở các phần cần tổng hợp nhiều chi tiết: đọc yêu cầu HW05, biến workflow EShop thành Flow A gồm 9 request, hướng dẫn cấu hình JMeter GUI, tạo `.jmx`, giải thích token extractor/header và soạn báo cáo từ nhiều nguồn evidence. AI cũng giúp sửa hướng thiết kế Stress: ban đầu có xu hướng nghĩ theo nhiều lệnh chạy rời rạc, sau review đã chuyển sang Ultimate Thread Group để tăng tải theo bậc trong cùng một run. Phần này làm bài test nhất quán hơn và tạo biểu đồ dễ đọc hơn.
+
+Tuy nhiên AI không đủ tin cậy nếu chỉ nghe phần diễn giải mà không đối chiếu log thô. Có ba lỗi/dễ lỗi nổi bật. Thứ nhất, dòng console `summary = 0` có thể bị hiểu thành “test không chạy”, trong khi raw `.jtl` Load có 5,000 dòng pass. Thứ hai, 43 lỗi trong Stress dễ bị đọc nhầm là backend HTTP failure, nhưng kiểm tra `.jtl` cho thấy đó là transaction parent `Response was null`, còn child HTTP vẫn trả `200`. Thứ ba, Spike run có `401/403` hàng loạt không được dùng để kết luận performance vì nguyên nhân đến từ data/login dirty, không phải khả năng chịu tải.
+
+Bài học chính là AI chỉ nên đóng vai trò trợ lý phân tích và phát hiện hướng kiểm tra. Kết luận cuối cùng phải dựa trên evidence có thể kiểm chứng: `.jmx`, `.jtl`, `statistics.json`, HTML report và screenshot monitoring. Với bài HW05 này, human review là bước bắt buộc: kiểm tra raw result, phân biệt total users với concurrent users, phân loại lỗi parent/child sampler và chỉ giữ các run có dữ liệu seed sạch.

@@ -326,7 +326,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">reports/results/23127522_Load_20260817_gui.jtl</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>

@@ -1,0 +1,3 @@
+interface:
+  display_name: "HW05 Performance Reporter"
+  short_description: "Prepare HW05 JMeter reports from EShop performance artifacts"

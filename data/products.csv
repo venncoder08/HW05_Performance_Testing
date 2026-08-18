@@ -8,198 +8,198 @@ product_id,ten_san_pham,gia,category_id,ten_category,kieu_price_tra_ve
 7,Samsung Galaxy S24,21150000,1,Điện thoại,number
 8,Samsung Galaxy S24 Plus,27800000,1,Điện thoại,string
 9,Samsung Galaxy Z Flip 5,24170000,1,Điện thoại,number
-10,Samsung Galaxy A55,9350000,1,Điện thoại,string
+10,iPhone 15,22210000,1,Điện thoại,string
 11,Samsung Galaxy A35,6570000,1,Điện thoại,number
 12,Xiaomi 14,20990000,1,Điện thoại,string
-13,iPhone 13,15290000,1,Điện thoại,number
-14,iPhone 14 Pro Max,23650000,1,Điện thoại,string
-15,iPhone 15,22210000,1,Điện thoại,number
+13,iPhone 14 Pro Max,23650000,1,Điện thoại,number
+14,Samsung Galaxy A55,9350000,1,Điện thoại,string
+15,iPhone 13,15290000,1,Điện thoại,number
 16,Xiaomi Redmi Note 13 Pro,6170000,1,Điện thoại,string
-17,OPPO A78,5330000,1,Điện thoại,number
-18,Xiaomi Redmi 13C,3490000,1,Điện thoại,string
-19,vivo Y36,5870000,1,Điện thoại,number
-20,realme 12 Pro Plus,11980000,1,Điện thoại,string
+17,Xiaomi Redmi 13C,3490000,1,Điện thoại,number
+18,OPPO A78,5330000,1,Điện thoại,string
+19,vivo V30e,9170000,1,Điện thoại,number
+20,vivo Y36,5870000,1,Điện thoại,string
 21,OPPO Reno11 F,8150000,1,Điện thoại,number
 22,OPPO Find N3 Flip,24600000,1,Điện thoại,string
-23,vivo V30e,9170000,1,Điện thoại,number
-24,realme C67,4540000,1,Điện thoại,string
-25,Google Pixel 8,19790000,1,Điện thoại,number
-26,Nothing Phone 2a,8990000,1,Điện thoại,string
-27,ASUS ROG Phone 8,22490000,1,Điện thoại,number
-28,Honor X7b,4840000,1,Điện thoại,string
-29,TECNO Camon 30,5450000,1,Điện thoại,number
-30,MacBook Air M2 13 inch,25490000,2,Laptop,string
-31,MacBook Air M3 15 inch,30350000,2,Laptop,number
+23,Google Pixel 8,19790000,1,Điện thoại,number
+24,Nothing Phone 2a,8990000,1,Điện thoại,string
+25,realme 12 Pro Plus,11980000,1,Điện thoại,number
+26,ASUS ROG Phone 8,22490000,1,Điện thoại,string
+27,Honor X7b,4840000,1,Điện thoại,number
+28,realme C67,4540000,1,Điện thoại,string
+29,MacBook Air M3 15 inch,30350000,2,Laptop,number
+30,TECNO Camon 30,5450000,1,Điện thoại,string
+31,MacBook Air M2 13 inch,25490000,2,Laptop,number
 32,MacBook Pro M3 Pro 14 inch,50460000,2,Laptop,string
-33,Dell XPS 13 Plus,37190000,2,Laptop,number
-34,Dell Inspiron 15 3520,15590000,2,Laptop,string
-35,Dell Vostro 3520,15970000,2,Laptop,number
+33,Dell Inspiron 15 3520,15590000,2,Laptop,number
+34,Dell Vostro 3520,15970000,2,Laptop,string
+35,Dell XPS 13 Plus,37190000,2,Laptop,number
 36,HP Pavilion 15,16790000,2,Laptop,string
-37,Lenovo ThinkPad X1 Carbon Gen 11,41270000,2,Laptop,number
-38,HP Envy x360 14,24690000,2,Laptop,string
-39,HP Victus 16,23310000,2,Laptop,number
+37,HP Envy x360 14,24690000,2,Laptop,number
+38,HP Victus 16,23310000,2,Laptop,string
+39,Lenovo ThinkPad X1 Carbon Gen 11,41270000,2,Laptop,number
 40,Lenovo IdeaPad Slim 5,16570000,2,Laptop,string
-41,ASUS Vivobook 15,13710000,2,Laptop,number
-42,Lenovo LOQ 15,20360000,2,Laptop,string
-43,ASUS Zenbook 14 OLED,29150000,2,Laptop,number
-44,ASUS TUF Gaming F15,25060000,2,Laptop,string
-45,ASUS ROG Zephyrus G14,41570000,2,Laptop,number
-46,Acer Swift Go 14,17090000,2,Laptop,string
-47,Acer Aspire 5,14290000,2,Laptop,number
-48,Acer Nitro 5 Tiger,19990000,2,Laptop,string
+41,Lenovo LOQ 15,20360000,2,Laptop,number
+42,ASUS Vivobook 15,13710000,2,Laptop,string
+43,ASUS ROG Zephyrus G14,41570000,2,Laptop,number
+44,ASUS Zenbook 14 OLED,29150000,2,Laptop,string
+45,ASUS TUF Gaming F15,25060000,2,Laptop,number
+46,Acer Aspire 5,14290000,2,Laptop,string
+47,Acer Nitro 5 Tiger,19990000,2,Laptop,number
+48,Acer Swift Go 14,17090000,2,Laptop,string
 49,MSI Modern 14,13620000,2,Laptop,number
 50,MSI Katana 15,21830000,2,Laptop,string
 51,LG Gram 14 inch,32630000,2,Laptop,number
 52,Gigabyte G5 KF,25740000,2,Laptop,string
-53,Tai nghe AirPods 3,4360000,3,Phụ kiện,number
-54,Tai nghe Sony WH-1000XM5,7980000,3,Phụ kiện,string
+53,Tai nghe Sony WH-1000XM5,7980000,3,Phụ kiện,number
+54,Tai nghe AirPods 3,4360000,3,Phụ kiện,string
 55,Huawei MateBook D14,13790000,2,Laptop,number
-56,Tai nghe Sony WF-C700N,2400000,3,Phụ kiện,string
-57,Tai nghe Samsung Galaxy Buds2 Pro,3790000,3,Phụ kiện,number
-58,Tai nghe JBL Tune 770NC,2640000,3,Phụ kiện,string
-59,Bàn phím cơ Akko 3068B Plus,1540000,3,Phụ kiện,number
-60,Bàn phím cơ Logitech MX Mechanical,3770000,3,Phụ kiện,string
-61,Tai nghe Anker Soundcore Q30,1240000,3,Phụ kiện,number
-62,Bàn phím cơ Keychron K2 Pro,2990000,3,Phụ kiện,string
+56,Tai nghe Samsung Galaxy Buds2 Pro,3790000,3,Phụ kiện,string
+57,Tai nghe Sony WF-C700N,2400000,3,Phụ kiện,number
+58,Tai nghe Anker Soundcore Q30,1240000,3,Phụ kiện,string
+59,Bàn phím cơ Keychron K2 Pro,2990000,3,Phụ kiện,number
+60,Tai nghe JBL Tune 770NC,2640000,3,Phụ kiện,string
+61,Bàn phím cơ Akko 3068B Plus,1540000,3,Phụ kiện,number
+62,Bàn phím cơ Logitech MX Mechanical,3770000,3,Phụ kiện,string
 63,Chuột Logitech MX Master 3S,2540000,3,Phụ kiện,number
 64,Chuột Logitech G Pro X Superlight,3480000,3,Phụ kiện,string
 65,Chuột Razer DeathAdder V3,1770000,3,Phụ kiện,number
-66,Sạc nhanh Anker 735 GaN 65W,980000,3,Phụ kiện,string
-67,Sạc nhanh Ugreen Nexode 100W,1490000,3,Phụ kiện,number
-68,Pin sạc dự phòng Anker 737 24000mAh,2510000,3,Phụ kiện,string
-69,Pin sạc dự phòng Xiaomi 20000mAh,700000,3,Phụ kiện,number
+66,Pin sạc dự phòng Anker 737 24000mAh,2510000,3,Phụ kiện,string
+67,Sạc nhanh Anker 735 GaN 65W,980000,3,Phụ kiện,number
+68,Pin sạc dự phòng Xiaomi 20000mAh,700000,3,Phụ kiện,string
+69,Sạc nhanh Ugreen Nexode 100W,1490000,3,Phụ kiện,number
 70,Ổ cứng di động Samsung T7 1TB,2170000,3,Phụ kiện,string
 71,Ổ cứng di động SanDisk Extreme 1TB,2850000,3,Phụ kiện,number
-72,Thẻ nhớ SanDisk Extreme Pro 256GB,910000,3,Phụ kiện,string
-73,Hub USB-C Ugreen 6 trong 1,810000,3,Phụ kiện,number
-74,Balo laptop Targus Cypress 15.6 inch,1340000,3,Phụ kiện,string
-75,Giá đỡ laptop nhôm Ugreen,910000,3,Phụ kiện,number
-76,Đế tản nhiệt laptop Cooler Master,600000,3,Phụ kiện,string
-77,iPhone 15 Pro 256GB Trắng,29390000,1,Điện thoại,number
-78,iPhone 15 256GB Trắng,20890000,1,Điện thoại,string
-79,iPhone 14 Pro Max 256GB Trắng,27550000,1,Điện thoại,number
-80,iPhone 13 256GB Trắng,14390000,1,Điện thoại,string
-81,Samsung Galaxy S24 256GB Trắng,24600000,1,Điện thoại,number
-82,Samsung Galaxy Z Flip 5 256GB Trắng,28070000,1,Điện thoại,string
-83,Samsung Galaxy S24 Plus 256GB Trắng,26180000,1,Điện thoại,number
+72,Hub USB-C Ugreen 6 trong 1,810000,3,Phụ kiện,string
+73,Thẻ nhớ SanDisk Extreme Pro 256GB,910000,3,Phụ kiện,number
+74,Đế tản nhiệt laptop Cooler Master,600000,3,Phụ kiện,string
+75,Balo laptop Targus Cypress 15.6 inch,1340000,3,Phụ kiện,number
+76,Giá đỡ laptop nhôm Ugreen,910000,3,Phụ kiện,string
+77,iPhone 15 256GB Trắng,20890000,1,Điện thoại,number
+78,iPhone 15 Pro 256GB Trắng,29390000,1,Điện thoại,string
+79,iPhone 13 256GB Trắng,14390000,1,Điện thoại,number
+80,iPhone 14 Pro Max 256GB Trắng,27550000,1,Điện thoại,string
+81,Samsung Galaxy S24 Plus 256GB Trắng,26180000,1,Điện thoại,number
+82,Samsung Galaxy S24 256GB Trắng,24600000,1,Điện thoại,string
+83,Samsung Galaxy Z Flip 5 256GB Trắng,28070000,1,Điện thoại,number
 84,Samsung Galaxy A55 256GB Trắng,8810000,1,Điện thoại,string
 85,Samsung Galaxy A35 256GB Trắng,7620000,1,Điện thoại,number
 86,Xiaomi 14 256GB Trắng,19790000,1,Điện thoại,string
 87,Xiaomi Redmi Note 13 Pro 256GB Trắng,7140000,1,Điện thoại,number
-88,OPPO Reno11 F 256GB Trắng,7640000,1,Điện thoại,string
-89,Xiaomi Redmi 13C 256GB Trắng,3290000,1,Điện thoại,number
-90,OPPO Find N3 Flip 256GB Trắng,23220000,1,Điện thoại,string
-91,realme 12 Pro Plus 256GB Trắng,11320000,1,Điện thoại,number
-92,vivo Y36 256GB Trắng,5510000,1,Điện thoại,string
-93,OPPO A78 256GB Trắng,5000000,1,Điện thoại,number
-94,vivo V30e 256GB Trắng,8660000,1,Điện thoại,string
-95,realme C67 256GB Trắng,4270000,1,Điện thoại,number
+88,Xiaomi Redmi 13C 256GB Trắng,3290000,1,Điện thoại,string
+89,vivo V30e 256GB Trắng,8660000,1,Điện thoại,number
+90,OPPO A78 256GB Trắng,5000000,1,Điện thoại,string
+91,OPPO Reno11 F 256GB Trắng,7640000,1,Điện thoại,number
+92,OPPO Find N3 Flip 256GB Trắng,23220000,1,Điện thoại,string
+93,vivo Y36 256GB Trắng,5510000,1,Điện thoại,number
+94,Nothing Phone 2a 256GB Trắng,8450000,1,Điện thoại,string
+95,realme 12 Pro Plus 256GB Trắng,11320000,1,Điện thoại,number
 96,Google Pixel 8 256GB Trắng,18710000,1,Điện thoại,string
-97,Nothing Phone 2a 256GB Trắng,8450000,1,Điện thoại,number
-98,Honor X7b 256GB Trắng,4550000,1,Điện thoại,string
-99,ASUS ROG Phone 8 256GB Trắng,26240000,1,Điện thoại,number
-100,TECNO Camon 30 256GB Trắng,6350000,1,Điện thoại,string
+97,realme C67 256GB Trắng,4270000,1,Điện thoại,number
+98,ASUS ROG Phone 8 256GB Trắng,26240000,1,Điện thoại,string
+99,Honor X7b 256GB Trắng,4550000,1,Điện thoại,number
+100,MacBook Pro M3 Pro 14 inch 256GB Trắng,47520000,2,Laptop,string
 101,MacBook Air M2 13 inch 256GB Trắng,23990000,2,Laptop,number
 102,MacBook Air M3 15 inch 256GB Trắng,35300000,2,Laptop,string
-103,MacBook Pro M3 Pro 14 inch 256GB Trắng,47520000,2,Laptop,number
+103,TECNO Camon 30 256GB Trắng,6350000,1,Điện thoại,number
 104,Dell XPS 13 Plus 256GB Trắng,43190000,2,Laptop,string
 105,Dell Inspiron 15 3520 256GB Trắng,14690000,2,Laptop,number
 106,Dell Vostro 3520 256GB Trắng,18520000,2,Laptop,string
-107,HP Envy x360 14 256GB Trắng,28590000,2,Laptop,number
-108,Lenovo ThinkPad X1 Carbon Gen 11 256GB Trắng,38690000,2,Laptop,string
+107,HP Pavilion 15 256GB Trắng,15830000,2,Laptop,number
+108,HP Envy x360 14 256GB Trắng,28590000,2,Laptop,string
 109,HP Victus 16 256GB Trắng,21990000,2,Laptop,number
-110,HP Pavilion 15 256GB Trắng,15830000,2,Laptop,string
+110,Lenovo ThinkPad X1 Carbon Gen 11 256GB Trắng,38690000,2,Laptop,string
 111,Lenovo IdeaPad Slim 5 256GB Trắng,15640000,2,Laptop,number
-112,Lenovo LOQ 15 256GB Trắng,19100000,2,Laptop,string
-113,ASUS Zenbook 14 OLED 256GB Trắng,27530000,2,Laptop,number
-114,ASUS Vivobook 15 256GB Trắng,12870000,2,Laptop,string
-115,Acer Nitro 5 Tiger 256GB Trắng,18790000,2,Laptop,number
-116,Acer Swift Go 14 256GB Trắng,19940000,2,Laptop,string
-117,MSI Modern 14 256GB Trắng,12820000,2,Laptop,number
-118,MSI Katana 15 256GB Trắng,25430000,2,Laptop,string
-119,Acer Aspire 5 256GB Trắng,13510000,2,Laptop,number
-120,ASUS TUF Gaming F15 256GB Trắng,23680000,2,Laptop,string
-121,LG Gram 14 inch 256GB Trắng,30710000,2,Laptop,number
-122,Huawei MateBook D14 256GB Trắng,16040000,2,Laptop,string
-123,ASUS ROG Zephyrus G14 256GB Trắng,39050000,2,Laptop,number
-124,Tai nghe AirPods Pro 2 Trắng,6470000,3,Phụ kiện,string
-125,Gigabyte G5 KF 256GB Trắng,24240000,2,Laptop,number
-126,Tai nghe Sony WH-1000XM5 Trắng,9250000,3,Phụ kiện,string
+112,ASUS TUF Gaming F15 256GB Trắng,23680000,2,Laptop,string
+113,ASUS ROG Zephyrus G14 256GB Trắng,39050000,2,Laptop,number
+114,Acer Aspire 5 256GB Trắng,13510000,2,Laptop,string
+115,Lenovo LOQ 15 256GB Trắng,19100000,2,Laptop,number
+116,ASUS Zenbook 14 OLED 256GB Trắng,27530000,2,Laptop,string
+117,ASUS Vivobook 15 256GB Trắng,12870000,2,Laptop,number
+118,Acer Nitro 5 Tiger 256GB Trắng,18790000,2,Laptop,string
+119,Acer Swift Go 14 256GB Trắng,19940000,2,Laptop,number
+120,MSI Modern 14 256GB Trắng,12820000,2,Laptop,string
+121,MSI Katana 15 256GB Trắng,25430000,2,Laptop,number
+122,Gigabyte G5 KF 256GB Trắng,24240000,2,Laptop,string
+123,Tai nghe AirPods Pro 2 Trắng,6470000,3,Phụ kiện,number
+124,LG Gram 14 inch 256GB Trắng,30710000,2,Laptop,string
+125,Tai nghe Sony WH-1000XM5 Trắng,9250000,3,Phụ kiện,number
+126,Huawei MateBook D14 256GB Trắng,16040000,2,Laptop,string
 127,Tai nghe AirPods 3 Trắng,4110000,3,Phụ kiện,number
-128,Tai nghe Samsung Galaxy Buds2 Pro Trắng,4390000,3,Phụ kiện,string
-129,Tai nghe JBL Tune 770NC Trắng,2490000,3,Phụ kiện,number
-130,Tai nghe Anker Soundcore Q30 Trắng,1160000,3,Phụ kiện,string
-131,Tai nghe Sony WF-C700N Trắng,2270000,3,Phụ kiện,number
+128,Tai nghe Sony WF-C700N Trắng,2270000,3,Phụ kiện,string
+129,Tai nghe Samsung Galaxy Buds2 Pro Trắng,4390000,3,Phụ kiện,number
+130,Tai nghe JBL Tune 770NC Trắng,2490000,3,Phụ kiện,string
+131,Tai nghe Anker Soundcore Q30 Trắng,1160000,3,Phụ kiện,number
 132,Bàn phím cơ Keychron K2 Pro Trắng,2820000,3,Phụ kiện,string
-133,Bàn phím cơ Akko 3068B Plus Trắng,1450000,3,Phụ kiện,number
-134,Chuột Logitech G Pro X Superlight Trắng,3290000,3,Phụ kiện,string
-135,Bàn phím cơ Logitech MX Mechanical Trắng,3560000,3,Phụ kiện,number
-136,Chuột Logitech MX Master 3S Trắng,2380000,3,Phụ kiện,string
-137,Chuột Razer DeathAdder V3 Trắng,1660000,3,Phụ kiện,number
+133,Chuột Logitech G Pro X Superlight Trắng,3290000,3,Phụ kiện,number
+134,Chuột Razer DeathAdder V3 Trắng,1660000,3,Phụ kiện,string
+135,Bàn phím cơ Akko 3068B Plus Trắng,1450000,3,Phụ kiện,number
+136,Bàn phím cơ Logitech MX Mechanical Trắng,3560000,3,Phụ kiện,string
+137,Chuột Logitech MX Master 3S Trắng,2380000,3,Phụ kiện,number
 138,Sạc nhanh Anker 735 GaN 65W Trắng,930000,3,Phụ kiện,string
-139,Ổ cứng di động Samsung T7 1TB Trắng,2530000,3,Phụ kiện,number
-140,Ổ cứng di động SanDisk Extreme 1TB Trắng,2680000,3,Phụ kiện,string
+139,Sạc nhanh Ugreen Nexode 100W Trắng,1400000,3,Phụ kiện,number
+140,Pin sạc dự phòng Anker 737 24000mAh Trắng,2930000,3,Phụ kiện,string
 141,Pin sạc dự phòng Xiaomi 20000mAh Trắng,660000,3,Phụ kiện,number
-142,Sạc nhanh Ugreen Nexode 100W Trắng,1400000,3,Phụ kiện,string
-143,Pin sạc dự phòng Anker 737 24000mAh Trắng,2930000,3,Phụ kiện,number
-144,Thẻ nhớ SanDisk Extreme Pro 256GB Trắng,1060000,3,Phụ kiện,string
-145,Hub USB-C Ugreen 6 trong 1 Trắng,770000,3,Phụ kiện,number
-146,Đế tản nhiệt laptop Cooler Master Trắng,700000,3,Phụ kiện,string
-147,Balo laptop Targus Cypress 15.6 inch Trắng,1260000,3,Phụ kiện,number
-148,Giá đỡ laptop nhôm Ugreen Trắng,680000,3,Phụ kiện,string
+142,Ổ cứng di động Samsung T7 1TB Trắng,2530000,3,Phụ kiện,string
+143,Ổ cứng di động SanDisk Extreme 1TB Trắng,2680000,3,Phụ kiện,number
+144,Balo laptop Targus Cypress 15.6 inch Trắng,1260000,3,Phụ kiện,string
+145,Giá đỡ laptop nhôm Ugreen Trắng,680000,3,Phụ kiện,number
+146,Thẻ nhớ SanDisk Extreme Pro 256GB Trắng,1060000,3,Phụ kiện,string
+147,Hub USB-C Ugreen 6 trong 1 Trắng,770000,3,Phụ kiện,number
+148,Đế tản nhiệt laptop Cooler Master Trắng,700000,3,Phụ kiện,string
 149,iPhone 15 Pro 512GB Xanh dương,27710000,1,Điện thoại,number
 150,iPhone 15 512GB Xanh dương,24190000,1,Điện thoại,string
-151,iPhone 14 Pro Max 512GB Xanh dương,25990000,1,Điện thoại,number
-152,iPhone 13 512GB Xanh dương,13490000,1,Điện thoại,string
+151,iPhone 13 512GB Xanh dương,13490000,1,Điện thoại,number
+152,iPhone 14 Pro Max 512GB Xanh dương,25990000,1,Điện thoại,string
 153,Samsung Galaxy S24 512GB Xanh dương,23220000,1,Điện thoại,number
 154,Samsung Galaxy S24 Plus 512GB Xanh dương,24560000,1,Điện thoại,string
 155,Samsung Galaxy Z Flip 5 512GB Xanh dương,26510000,1,Điện thoại,number
 156,Samsung Galaxy A55 512GB Xanh dương,8270000,1,Điện thoại,string
-157,Xiaomi 14 512GB Xanh dương,18590000,1,Điện thoại,number
+157,Xiaomi Redmi Note 13 Pro 512GB Xanh dương,6750000,1,Điện thoại,number
 158,Samsung Galaxy A35 512GB Xanh dương,7200000,1,Điện thoại,string
-159,Xiaomi Redmi Note 13 Pro 512GB Xanh dương,6750000,1,Điện thoại,number
-160,Xiaomi Redmi 13C 512GB Xanh dương,3090000,1,Điện thoại,string
-161,OPPO Reno11 F 512GB Xanh dương,8910000,1,Điện thoại,number
+159,Xiaomi Redmi 13C 512GB Xanh dương,3090000,1,Điện thoại,number
+160,OPPO Reno11 F 512GB Xanh dương,8910000,1,Điện thoại,string
+161,Xiaomi 14 512GB Xanh dương,18590000,1,Điện thoại,number
 162,OPPO Find N3 Flip 512GB Xanh dương,21840000,1,Điện thoại,string
-163,vivo Y36 512GB Xanh dương,6410000,1,Điện thoại,number
-164,realme 12 Pro Plus 512GB Xanh dương,10660000,1,Điện thoại,string
-165,vivo V30e 512GB Xanh dương,8150000,1,Điện thoại,number
-166,realme C67 512GB Xanh dương,4960000,1,Điện thoại,string
-167,OPPO A78 512GB Xanh dương,5820000,1,Điện thoại,number
-168,ASUS ROG Phone 8 512GB Xanh dương,24740000,1,Điện thoại,string
-169,Google Pixel 8 512GB Xanh dương,17630000,1,Điện thoại,number
-170,Nothing Phone 2a 512GB Xanh dương,9800000,1,Điện thoại,string
-171,Honor X7b 512GB Xanh dương,5270000,1,Điện thoại,number
-172,TECNO Camon 30 512GB Xanh dương,5990000,1,Điện thoại,string
-173,MacBook Air M2 13 inch 512GB Xanh dương,22490000,2,Laptop,number
-174,Dell XPS 13 Plus 512GB Xanh dương,40790000,2,Laptop,string
-175,Dell Inspiron 15 3520 512GB Xanh dương,13790000,2,Laptop,number
-176,HP Pavilion 15 512GB Xanh dương,14870000,2,Laptop,string
-177,MacBook Pro M3 Pro 14 inch 512GB Xanh dương,44580000,2,Laptop,number
-178,Dell Vostro 3520 512GB Xanh dương,17500000,2,Laptop,string
-179,MacBook Air M3 15 inch 512GB Xanh dương,33320000,2,Laptop,number
+163,OPPO A78 512GB Xanh dương,5820000,1,Điện thoại,number
+164,vivo V30e 512GB Xanh dương,8150000,1,Điện thoại,string
+165,vivo Y36 512GB Xanh dương,6410000,1,Điện thoại,number
+166,realme 12 Pro Plus 512GB Xanh dương,10660000,1,Điện thoại,string
+167,realme C67 512GB Xanh dương,4960000,1,Điện thoại,number
+168,Google Pixel 8 512GB Xanh dương,17630000,1,Điện thoại,string
+169,Nothing Phone 2a 512GB Xanh dương,9800000,1,Điện thoại,number
+170,MacBook Air M2 13 inch 512GB Xanh dương,22490000,2,Laptop,string
+171,TECNO Camon 30 512GB Xanh dương,5990000,1,Điện thoại,number
+172,ASUS ROG Phone 8 512GB Xanh dương,24740000,1,Điện thoại,string
+173,Honor X7b 512GB Xanh dương,5270000,1,Điện thoại,number
+174,MacBook Air M3 15 inch 512GB Xanh dương,33320000,2,Laptop,string
+175,Dell XPS 13 Plus 512GB Xanh dương,40790000,2,Laptop,number
+176,MacBook Pro M3 Pro 14 inch 512GB Xanh dương,44580000,2,Laptop,string
+177,Dell Inspiron 15 3520 512GB Xanh dương,13790000,2,Laptop,number
+178,HP Pavilion 15 512GB Xanh dương,14870000,2,Laptop,string
+179,Dell Vostro 3520 512GB Xanh dương,17500000,2,Laptop,number
 180,HP Envy x360 14 512GB Xanh dương,27030000,2,Laptop,string
 181,HP Victus 16 512GB Xanh dương,20670000,2,Laptop,number
 182,Lenovo ThinkPad X1 Carbon Gen 11 512GB Xanh dương,45140000,2,Laptop,string
 183,Lenovo IdeaPad Slim 5 512GB Xanh dương,14720000,2,Laptop,number
-184,Lenovo LOQ 15 512GB Xanh dương,22250000,2,Laptop,string
-185,ASUS Zenbook 14 OLED 512GB Xanh dương,25910000,2,Laptop,number
-186,ASUS ROG Zephyrus G14 512GB Xanh dương,45350000,2,Laptop,string
-187,ASUS Vivobook 15 512GB Xanh dương,14970000,2,Laptop,number
-188,ASUS TUF Gaming F15 512GB Xanh dương,22300000,2,Laptop,string
+184,ASUS Vivobook 15 512GB Xanh dương,14970000,2,Laptop,string
+185,Lenovo LOQ 15 512GB Xanh dương,22250000,2,Laptop,number
+186,ASUS Zenbook 14 OLED 512GB Xanh dương,25910000,2,Laptop,string
+187,ASUS TUF Gaming F15 512GB Xanh dương,22300000,2,Laptop,number
+188,ASUS ROG Zephyrus G14 512GB Xanh dương,45350000,2,Laptop,string
 189,Acer Aspire 5 512GB Xanh dương,12730000,2,Laptop,number
-190,Acer Swift Go 14 512GB Xanh dương,18800000,2,Laptop,string
+190,MSI Modern 14 512GB Xanh dương,14840000,2,Laptop,string
 191,Acer Nitro 5 Tiger 512GB Xanh dương,21790000,2,Laptop,number
-192,MSI Modern 14 512GB Xanh dương,14840000,2,Laptop,string
-193,LG Gram 14 inch 512GB Xanh dương,28790000,2,Laptop,number
-194,MSI Katana 15 512GB Xanh dương,23990000,2,Laptop,string
+192,Acer Swift Go 14 512GB Xanh dương,18800000,2,Laptop,string
+193,MSI Katana 15 512GB Xanh dương,23990000,2,Laptop,number
+194,LG Gram 14 inch 512GB Xanh dương,28790000,2,Laptop,string
 195,Huawei MateBook D14 512GB Xanh dương,15140000,2,Laptop,number
 196,Gigabyte G5 KF 512GB Xanh dương,22740000,2,Laptop,string
 197,Tai nghe AirPods Pro 2 Xanh dương,6110000,3,Phụ kiện,number
 198,Tai nghe AirPods 3 Xanh dương,3850000,3,Phụ kiện,string
 199,Tai nghe Sony WH-1000XM5 Xanh dương,8740000,3,Phụ kiện,number
-200,Tai nghe Samsung Galaxy Buds2 Pro Xanh dương,4150000,3,Phụ kiện,string
-201,Tai nghe Sony WF-C700N Xanh dương,2130000,3,Phụ kiện,number
-202,Tai nghe Anker Soundcore Q30 Xanh dương,1350000,3,Phụ kiện,string
-203,Bàn phím cơ Keychron K2 Pro Xanh dương,2650000,3,Phụ kiện,number
-204,Tai nghe JBL Tune 770NC Xanh dương,2340000,3,Phụ kiện,string
+200,Tai nghe Sony WF-C700N Xanh dương,2130000,3,Phụ kiện,string
+201,Tai nghe Samsung Galaxy Buds2 Pro Xanh dương,4150000,3,Phụ kiện,number
+202,Tai nghe JBL Tune 770NC Xanh dương,2340000,3,Phụ kiện,string
+203,Tai nghe Anker Soundcore Q30 Xanh dương,1350000,3,Phụ kiện,number
+204,Bàn phím cơ Keychron K2 Pro Xanh dương,2650000,3,Phụ kiện,string

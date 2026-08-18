@@ -4,15 +4,16 @@ Họ tên: Ong Khánh Vinh
 MSSV: 23127522
 Lớp: 23KTPM1
 Bài tập: HW05 — Performance Testing (Load / Stress / Spike) với JMeter trên EShop SUT
-Công cụ AI đã dùng: **Claude Code** (CLI). Model thay đổi trong phiên — xem mục "Model và effort".
+Công cụ AI đã dùng: **Claude Code** (CLI) và **Codex** trong workspace local. Model thay đổi trong phiên — xem mục "Model và effort".
 Múi giờ: Asia/Saigon, UTC+07:00
 Đối tượng kiểm thử: `eshop-sut` backend REST API, local, `http://localhost:3000`
 Repo nộp bài: `https://github.com/venncoder08/HW05_Performance_Testing`
 
 Khai báo theo mục 9 của đề: **Tôi có sử dụng công cụ AI cho các nhiệm vụ sau** — dịch đề bài, chọn
 luồng nghiệp vụ end-to-end, đọc source code SUT để xác định endpoint, lập kế hoạch theo giai đoạn,
-cài đặt JMeter + plugin, và soạn tài liệu tham chiếu API. Toàn bộ prompt và output được liệt kê
-bên dưới.
+cài đặt JMeter + plugin, tạo/chạy/review test plan JMeter, phân tích `.jtl`, tạo main report,
+xuất PDF, cập nhật GitHub Issues và soạn mô hình Continuous Performance Testing. Prompt và output
+được liệt kê bên dưới theo các phiên làm việc.
 
 ## Ghi chú về timestamp (tính xác thực của bằng chứng)
 
@@ -33,13 +34,14 @@ OUT=turns.json python scripts/extract_prompts.py
 # rows=545 real_user_turns=29
 ```
 
-Script lọc bỏ những entry **không phải người gõ**: `tool_result`, `<system-reminder>`,
-`<local-command-stdout>`, các slash command, và thông báo lỗi API. Sau khi lọc còn **29 lượt prompt
-thật của người dùng**, xếp theo thứ tự thời gian và liệt kê đầy đủ dưới đây — không bỏ lượt nào,
-kể cả các lượt lỗi và các lượt trùng.
+Script Claude lọc bỏ những entry **không phải người gõ**: `tool_result`, `<system-reminder>`,
+`<local-command-stdout>`, các slash command, và thông báo lỗi API. Sau khi lọc phần Claude còn
+**29 lượt prompt thật của người dùng**. Phần Codex được bổ sung từ transcript local và có thêm
+**89 lượt**, nâng tổng số prompt được ghi trong appendix này lên **118 lượt**.
 
-Phạm vi thời gian: **2026-08-16 17:03:42 → 2026-08-17 02:37:21** (một ngày làm việc kéo qua nửa
-đêm, hai phiên CLI; phiên 2 bắt đầu 23:38 ngày 16/08 sau khoảng nghỉ ~3,7 giờ).
+Phạm vi thời gian của phần log này: **2026-08-16 17:03:42 → 2026-08-18 23:04:36**. Phần đầu
+được trích từ transcript Claude Code, phần bổ sung được đối chiếu từ transcript Codex local
+`C:\Users\ACER\.codex\sessions\2026\08\17\rollout-2026-08-17T19-46-47-01a00fc2-9ae4-7792-87cb-35bef0bc8d17.jsonl`.
 
 ## Model và effort
 
@@ -54,10 +56,10 @@ Phạm vi thời gian: **2026-08-16 17:03:42 → 2026-08-17 02:37:21** (một ng
 
 ## Ghi chú phạm vi (Scope Note)
 
-Tại thời điểm của log này, công việc đã đi đến hết **Giai đoạn 2** (chuẩn bị môi trường + tài liệu
-API + dữ liệu test seed/CSV). Chưa có file `.jmx`, chưa có `.jtl`, nên **không có bất kỳ số liệu
-hiệu năng nào** xuất hiện trong log này. Những gì AI đã kiểm chứng bằng thực thi thật (không phải
-suy đoán):
+Phần log Claude Code ban đầu đi đến hết **Giai đoạn 2** (chuẩn bị môi trường + tài liệu API + dữ
+liệu test seed/CSV), nên ở đoạn đầu chưa có `.jmx`/`.jtl`. Phần bổ sung Codex phía dưới tiếp tục
+ghi lại quá trình tạo Load/Stress/Spike `.jmx`, chạy JMeter, phân tích `.jtl`, tạo report/PDF và
+đẩy GitHub Issues. Những gì AI đã kiểm chứng bằng thực thi thật (không phải suy đoán):
 
 - JMeter 5.6.3 chạy được trên Java 25 — verify bằng `jmeter.bat --version` (lượt 16).
 - Plugin `jpgc-casutg` load được class `ConcurrencyThreadGroup` — verify bằng cách nạp thật một
@@ -103,19 +105,115 @@ suy đoán):
 | 28 | 2026-08-17 01:19:10 | "Hãy restyle lại verify-seed, seed-data.js lại thành các hàm, biến tiếng anh" | Đổi tên toàn bộ hàm/biến tiếng Việt sang tiếng Anh trong cả 2 file (`sinhNguoiDung`→`generateUsers`, `sinhSanPham`→`generateProducts`, `boDau`→`stripDiacritics`, `chayFlowA`→`runFlowA`, `soLoi`→`errorCount`, v.v.), giữ nguyên toàn bộ dữ liệu tiếng Việt có dấu, comment, và header CSV. Trong lúc thao tác đã ghi đè `seed-data.js` bằng bản dựng lại từ bộ nhớ hội thoại thay vì đọc file thật — phát hiện sai sót này ngay và phục hồi lại đúng nội dung gốc bằng cách trích xuất trực tiếp các lệnh `Write`/`Edit` đã từng ghi vào file đó từ transcript `.jsonl`, rồi mới áp lại các đổi tên. Restart backend, chạy lại `seed-data.js` + `verify-seed.js` trên DB sạch để xác nhận hành vi không đổi — kết quả `TẤT CẢ ĐẠT`. | `scripts/seed-data.js`, `scripts/verify-seed.js` |
 | 29 | 2026-08-17 02:37:21 | "Bây giờ tôi muốn override prompt_logs thì chỉ cần chạy file py à" | Trả lời: **không đủ** — `extract_prompts.py` chỉ trích JSON thô các lượt thật, chưa tự viết ra `prompt_logs.md`; bước format sang markdown vẫn do AI đọc JSON rồi viết tay. Chạy lại script (`rows=545 real_user_turns=29`), rồi cập nhật toàn bộ file log này (bảng, số dòng `.jsonl`, phạm vi thời gian, trạng thái Giai đoạn 2, mục nhận xét độ tin cậy). | `scripts/extract_prompts.py`; chính file này |
 
+## Bổ sung log Codex theo thứ tự thời gian
+
+Nguồn kiểm chứng: transcript Codex local `C:\Users\ACER\.codex\sessions\2026\08\17\rollout-2026-08-17T19-46-47-01a00fc2-9ae4-7792-87cb-35bef0bc8d17.jsonl`. Bảng dưới ghi tiếp các prompt liên quan trực tiếp tới HW05 từ lúc bắt đầu dùng JMeter GUI đến khi hoàn thiện main report/PDF/GitHub Issues.
+
+| # | Ngày và giờ | Prompt của tôi | Kết quả đầu ra của AI | Bằng chứng / file |
+| ---: | --- | --- | --- | --- |
+| 30 | 2026-08-17 19:46:57 | "Ở phase 3, tôi muốn dùng jmeter thì dùng như thế nào" | Giải thích vai trò JMeter trong phase 3: tạo test plan, cấu hình Thread Group, CSV, HTTP samplers, extractor, listener và chạy thử. | hướng dẫn hội thoại |
+| 31 | 2026-08-17 19:50:17 | "nhưng mà hình như tôi chưa có test plan thì có dùng jmeter được không? Chỉ mới có data thôi" | Làm rõ chỉ có data thì chưa chạy performance được; cần `.jmx` gồm flow, threads, samplers, assertions và listener. | hướng dẫn hội thoại |
+| 32 | 2026-08-17 19:52:19 | "đây là GUI Jmeter, hãy hướng dẫn step by step" | Hướng dẫn tạo Test Plan trong GUI từ Test Plan → Thread Group → CSV Data Set Config → HTTP Request Defaults → samplers/listeners. | JMeter GUI |
+| 33 | 2026-08-17 20:10:26 | "Cho tôi hỏi với các request sau, thì nó chạy tuần tự theo flow à" | Giải thích các sampler trong Thread Group chạy tuần tự theo thứ tự cây JMeter, trừ khi dùng controller đặc biệt. | JMeter flow design |
+| 34 | 2026-08-17 20:12:55 | "Làm sao để Auth header bên trong một http request và import chính xác token vào" | Hướng dẫn dùng JSON Extractor lấy token từ login và HTTP Header Manager gắn `Authorization: Bearer ${authToken}`. | JMeter token config |
+| 35 | 2026-08-17 20:16:50 | "khi request 1 lấy đc token thì các request sau cần token nó tự hiểu à?" | Làm rõ JMeter không tự hiểu token; phải extract biến và tham chiếu biến trong header cho request sau. | JMeter token config |
+| 36 | 2026-08-17 20:18:06 | "cứ pháp xml trong .jmx hơi khó hiểu. Bạn có thể defiine cho tôi một số rule được không" | Tóm tắt rule đọc `.jmx`: mỗi node config/sampler thường đi kèm một `hashTree`; properties là `stringProp`, `boolProp`, `elementProp`, `collectionProp`. | giải thích `.jmx` |
+| 37 | 2026-08-17 20:19:42 | "vậy thì tôi thấy nó dùng `<hashtree/>` là gì" | Giải thích `hashTree` là cấu trúc cây con chứa children của node JMeter. | giải thích `.jmx` |
+| 38 | 2026-08-17 20:20:24 | "cần hashtree rỗng để làm gì" | Giải thích `hashTree` rỗng đánh dấu node không có child nhưng vẫn giữ đúng cấu trúc serialize của JMeter. | giải thích `.jmx` |
+| 39 | 2026-08-17 20:25:24 | "Hãy thiết kế 23127522_Load cho tôi, tôi đã thiết kế đến bước 03 rồi, bạn hãy tạo thêm và verify lại" | Tạo/hoàn thiện Load test plan, bổ sung request Flow A, CSV, token extractor, header, assertions/listener và verify file `.jmx`. | `test-plans/23127522_Load_20260817.jmx` |
+| 40 | 2026-08-17 20:30:03 | "Hãy hướng dẫn tôi cách chạy jmeter và review" | Hướng dẫn chạy GUI/non-GUI, xem listener, mở HTML report, kiểm tra `.jtl`, pass/fail, latency và resource monitor. | hướng dẫn chạy |
+| 41 | 2026-08-17 20:33:27 | "Tại sao start xong không thấy hiện gì cả" | Giải thích GUI có thể không hiển thị stat rõ nếu listener không mở hoặc test kết thúc nhanh; cần xem `.jtl`/listener/report. | troubleshooting |
+| 42 | 2026-08-17 20:38:24 | "có thể chạy bằng cmd không" | Đưa cú pháp `jmeter -n -t ... -l ... -e -o ...` để chạy non-GUI bằng Command Prompt. | `command.md` sau này |
+| 43 | 2026-08-17 20:43:32 | Dán output chạy Load non-GUI có `summary = 0` | Giải thích test tree load được nhưng không ghi sample; hướng dẫn kiểm tra thread group/scheduler/CSV/backend và raw `.jtl`. | console JMeter |
+| 44 | 2026-08-17 21:24:18 | "Ở trên là chỉ với 1 user thôi đúng không?" | Giải thích số user phụ thuộc `Number of Threads`, không phụ thuộc số dòng command. | hướng dẫn JMeter |
+| 45 | 2026-08-17 21:24:47 | "ví dụ để 2000 user nhưng trong file chỉ có 500 thì sao" | Giải thích CSV có thể recycle hoặc hết dữ liệu tùy cấu hình; khuyến nghị không để user > data nếu cần unique users. | data-driven config |
+| 46 | 2026-08-17 21:26:16 | "file html từ jmeter là bạn tự define hay jmeter làm" | Làm rõ HTML dashboard do JMeter tự sinh từ `.jtl` khi dùng `-e -o`; không phải file tự viết tay. | `reports/<scenario>` |
+| 47 | 2026-08-17 21:28:01 | Hỏi ý nghĩa Number of Threads, Ramp-up, Loop Count, Scheduler, Duration | Giải thích từng thông số điều khiển số VU, tốc độ ramp, số vòng lặp và thời lượng chạy. | hướng dẫn JMeter |
+| 48 | 2026-08-17 21:29:18 | "Giờ tôi nên define load plan này như thế nào" | Đề xuất cấu hình Load 500 users, ramp-up hợp lý, loop/duration phù hợp và think time để có baseline sạch. | Load plan |
+| 49 | 2026-08-17 21:37:53 | "Tại sao results ra đến 3 file jtl" | Giải thích nhiều `.jtl` là nhiều lần chạy/đặt tên output khác nhau; cần chọn file chính và tránh append. | `results/*.jtl` |
+| 50 | 2026-08-17 21:41:49 | "Giờ hãy đề xuất cho tôi vớ 500 users thì nên config chỉ số là bao nhiêu. Và làm sao để theo dõi tài nguyên" | Đề xuất chỉ số 500 users, ramp-up/loop/duration và cách theo dõi `node.exe`/`java.exe` trong Task Manager/Resource Monitor. | monitoring guidance |
+| 51 | 2026-08-17 21:42:49 | "Think time là gì" | Định nghĩa think time là thời gian nghỉ mô phỏng người dùng giữa các thao tác để tải thực tế hơn. | hướng dẫn JMeter |
+| 52 | 2026-08-17 21:51:37 | "trong report, load.html thể hiện ý nghĩa gì" | Giải thích HTML report/dashboard của JMeter: APDEX, requests summary, statistics, graphs. | HTML report |
+| 53 | 2026-08-17 21:56:02 | "Hãy cho tôi định nghĩa của load test" | Định nghĩa Load test là kiểm thử hệ thống dưới tải kỳ vọng/bình thường để đo baseline. | khái niệm performance |
+| 54 | 2026-08-17 21:57:19 | "Report trên html là gì" | Giải thích report HTML là dashboard tổng hợp từ `.jtl`, không phải listener riêng trong `.jmx`. | HTML report |
+| 55 | 2026-08-17 21:57:34 | "View Results Tree, Summary Report, Aggregate Report. Ý tôi là loại nào" | Phân biệt ba listener/report view của JMeter và cách dùng mỗi loại cho 3 test plan. | listener mapping |
+| 56 | 2026-08-17 22:01:36 | "hãy cho tôi định nghĩa của data driven" | Định nghĩa data-driven testing là chạy cùng logic test với dữ liệu đầu vào từ CSV/data source. | khái niệm test data |
+| 57 | 2026-08-17 22:38:09 | "Hãy kill hết process port 4445" | Hướng dẫn/kiểm tra port shutdown JMeter 4445 và xử lý process giữ port. | troubleshooting |
+| 58 | 2026-08-17 22:38:46 | Dán output chạy Load 500 non-GUI đang chờ port 4445 | Giải thích đây là JMeter đang chạy standalone test và lắng nghe shutdown port, không phải lỗi. | console JMeter |
+| 59 | 2026-08-17 22:45:02 | Hỏi yêu cầu 3 report views khác nhau có cần báo cáo ở final report không | Khuyến nghị cần ghi rõ trong final report mỗi plan dùng listener/report view nào để chứng minh không lặp. | report requirement |
+| 60 | 2026-08-17 22:46:32 | "Tôi vừa chạy jmeter với load testing, vậy aggregate report ở đâu hay phải config và chạy lại" | Giải thích Aggregate Report là listener trong `.jmx`/GUI; nếu chưa có thì thêm và chạy lại hoặc dùng HTML/statistics để phân tích. | listener/report |
+| 61 | 2026-08-17 22:49:33 | "Chạy GUI thì như vầy thì sao" | Giải thích popup existing file của JMeter: Append, Don't start, Overwrite; khuyến nghị xóa/overwrite cho run chính thức. | JMeter GUI |
+| 62 | 2026-08-17 22:50:19 | "Tôi muốn xóa result cũ thì sao" | Hướng dẫn xóa `.jtl` và thư mục report cũ trước khi chạy để tránh append hoặc lỗi output folder. | command guidance |
+| 63 | 2026-08-17 22:52:16 | Dán lỗi `Could not delete existing file D:\2025-2026 HK9\Test\HW06` | Chỉ ra có thể đang trỏ nhầm path folder thay vì file `.jtl`; cần chọn đúng file result, không chọn root project. | troubleshooting |
+| 64 | 2026-08-17 22:53:02 | "Tôi đã làm theo trình tự nhưng nó vẫn vậy" | Tiếp tục hướng dẫn kiểm tra đường dẫn result file, quyền truy cập và file đang mở/locked. | troubleshooting |
+| 65 | 2026-08-17 22:56:28 | "Hãy cho tôi lệnh chạy với cmd without gui đi" | Viết bộ lệnh cmd non-GUI chuẩn cho JMeter, gồm xóa result/report cũ và chạy `jmeter -n`. | command guidance |
+| 66 | 2026-08-17 23:09:48 | "Tại sao chạy xong rồi mà aggreate report không ghi gì cả" | Giải thích listener GUI không tự có số nếu không mở đúng file/result hoặc test không ghi sample; cần kiểm tra `.jtl`. | troubleshooting |
+| 67 | 2026-08-17 23:10:49 | "Tôi có nên bỏ aggregate report vào đâu không" | Khuyến nghị đặt Aggregate Report trong test plan Load để đáp ứng yêu cầu listener/report view. | Load listener |
+| 68 | 2026-08-17 23:11:35 | "ý là tôi cần nộp aggreate report vào final không" | Giải thích cần nộp `.jmx`, `.jtl`, HTML report và ghi trong report rằng Load dùng Aggregate Report. | submission guidance |
+| 69 | 2026-08-17 23:17:35 | "Load, Stress, Spike, Endurance khác gì nhau" | So sánh bốn loại test: Load baseline, Stress tăng đến giới hạn, Spike tải đột ngột, Endurance chạy lâu. | khái niệm performance |
+| 70 | 2026-08-17 23:18:55 | "kịch bản của stress test như thế nào nếu áp dụng vào bài này" | Đề xuất Stress cho Flow A: tăng VU theo bậc, quan sát p95/throughput/error và điểm suy giảm. | Stress plan |
+| 71 | 2026-08-17 23:20:41 | "nhưng task manage của tôi không thấy nó đo server backend đang chạy" | Hướng dẫn nhận diện `node.exe` backend và phân biệt với `java.exe` JMeter trong Task Manager. | monitoring |
+| 72 | 2026-08-17 23:22:39 | "Nếu được thiết kế stress test thì bạn sẽ làm thế nào" | Đề xuất stress test dùng một run liên tục, ramp theo bậc, hold từng mức tải và theo dõi p95/error/resource. | Stress design |
+| 73 | 2026-08-17 23:23:43 | "Không phải chạy liên tục à, tôi tưởng là chạy liên tục nhưng tăng VU theo từng thời điểm" | Xác nhận Stress nên là một run liên tục tăng VU theo thời điểm, không phải các lệnh rời rạc nếu muốn biểu đồ liên tục. | Stress design |
+| 74 | 2026-08-17 23:25:01 | "nhưng của bạn nói là từng lệnh cmd rời rạc" | Sửa hướng tiếp cận: nên dùng plugin/thread group nâng cao để profile ramp bậc trong cùng một test. | Stress design |
+| 75 | 2026-08-18 16:47:24 | "vậy muốn dùng stress là phải dùng plugin à" | Giải thích không bắt buộc, nhưng plugin Ultimate Thread Group phù hợp hơn để ramp bậc rõ ràng. | JMeter plugin |
+| 76 | 2026-08-18 16:49:34 | "jp@gc - Ultimate Thread Group. Hướng dẫn tôi dùng plugin này từ cách setup đến cách xài" | Hướng dẫn cài JMeter Plugin Manager/jp@gc Ultimate Thread Group và cấu hình rows threads/delay/startup/hold/shutdown. | plugin setup |
+| 77 | 2026-08-18 16:51:39 | "Đã có plugin hãy tạo stress test cho tôi" | Tạo Stress `.jmx` bằng Ultimate Thread Group 100→500 VU, Summary Report và verify SaveService. | `test-plans/23127522_Stress_20260818.jmx` |
+| 78 | 2026-08-18 16:59:33 | "Cho tôi hỏi, monitoring thì nên cần chuẩn bị gì khi chạy một file jmx" | Liệt kê checklist monitoring: backend PID, JMeter PID, CPU/RAM, screenshot, seed/verify, output file. | monitoring checklist |
+| 79 | 2026-08-18 17:03:25 | "Tôi thấy có đến hai node js là gì" | Giải thích có thể có nhiều `node.exe`; cần xem command line/PID để phân biệt backend với script/helper khác. | monitoring |
+| 80 | 2026-08-18 17:06:43 | "Có thể chạy powershell ở thư mục này mà không cần vscode không" | Xác nhận có thể mở PowerShell trực tiếp tại thư mục project và chạy lệnh tương tự. | command guidance |
+| 81 | 2026-08-18 17:19:54 | "Hãy tạo thêm giúp tôi Spike Test" | Tạo Spike `.jmx` bằng Ultimate Thread Group baseline 20 VU + spike 280 VU, View Results Tree và verify. | `test-plans/23127522_Spike_20260818.jmx` |
+| 82 | 2026-08-18 17:22:15 | "spike test giúp hỗ trợ gì trong việc test" | Giải thích Spike test giúp đo phản ứng khi tải tăng đột ngột, khả năng phục hồi, queue, timeout và error burst. | khái niệm performance |
+| 83 | 2026-08-18 17:22:44 | "Check giúp tôi results/Stress tại sao log nó ra lạ với load vậy" | Đọc Stress `.jtl`/report, giải thích Stress nhiều dòng hơn vì loop theo duration và có transaction parent. | `results/23127522_Stress_20260818.jtl` |
+| 84 | 2026-08-18 17:36:44 | "Tại sao jtl stress lại chứa hơn 15k dòng trong khi load chỉ chứa 5k mặc dù cả hai đều chỉ 500 users?" | Giải thích `.jtl` rows là sample records, không phải số user; Stress chạy nhiều vòng trong thời lượng giữ tải. | raw `.jtl` analysis |
+| 85 | 2026-08-18 17:44:30 | "Giải thích tại sao 1 user chạy tận 3 vòng flow. Tôi tưởng nó tăng sức chịu đựng chứ" | Giải thích loop/duration khiến cùng user có thể lặp nhiều flow; Stress đo khả năng chịu tải liên tục, không chỉ một lượt/user. | Stress behavior |
+| 86 | 2026-08-18 18:00:29 | "Vậy tại sao không viết plan duy trì 100 cho đến hết test luôn?" | Giải thích duy trì 100 chỉ là load/soak nhẹ; Stress cần tăng nhiều mức để tìm vùng suy giảm. | Stress strategy |
+| 87 | 2026-08-18 18:27:33 | "Bạn có thể giải thích tại sao đến 150k dòng không" | Tính/giải thích số dòng lớn do nhiều sampler mỗi flow, transaction parent và nhiều vòng trong 459 giây. | `results/23127522_Stress_20260818.jtl` |
+| 88 | 2026-08-18 18:29:11 | "Tôi thấy khi chạy No Gui thì nó không hiện stat cho mình, bạn có thể config để trực quan hơn không" | Đề xuất bật summariser interval qua `-Jsummariser.*` để console in thống kê định kỳ. | command options |
+| 89 | 2026-08-18 18:30:31 | "Hãy viết bộ câu lệnh cho 3 plan trong command.md đi" | Viết `command.md` với lệnh chạy backend, seed/verify, Load/Stress/Spike non-GUI, mở report và check result. | `command.md` |
+| 90 | 2026-08-18 18:32:20 | "Bạn có thể cho tôi kịch bản để quay 3 test này được không, giải thích các thông số của test thôi" | Soạn kịch bản demo/narration cho 3 test, tập trung giải thích thông số và output cần review. | demo script guidance |
+| 91 | 2026-08-18 18:39:38 | Dán output Load non-GUI có summariser nhưng vẫn `summary = 0` | Đối chiếu `.jtl` và report để giải thích console không đủ kết luận; hướng dẫn đọc output file. | `results/23127522_Load_20260817.jtl` |
+| 92 | 2026-08-18 19:05:50 | "Vậy thì tôi nên giải thích thông số gì ở output" | Liệt kê các thông số cần giải thích: samples, avg, median, p95/p99, throughput, error %, active threads, response code. | report guidance |
+| 93 | 2026-08-18 19:09:49 | "Tại sao tôi cứ chạy trên gui nó để existing file mặc dù đã xóa hết rồi" | Giải thích có thể xóa nhầm path, file locked, hoặc report folder còn tồn tại; khuyến nghị dùng output path mới/clear đúng file. | troubleshooting |
+| 94 | 2026-08-18 19:23:17 | "hãy tiếp tục cho tôi kịch bản demo stress test" | Viết tiếp script demo Stress: trước khi chạy, trong khi chạy, sau khi chạy và review biểu đồ. | demo script guidance |
+| 95 | 2026-08-18 19:44:26 | "tôi cần phân tích stress test như thế nào khi có file output html" | Hướng dẫn phân tích Stress HTML: Requests Summary, Statistics, Active Threads, Response Time, TPS và Errors. | `reports/stress` |
+| 96 | 2026-08-18 19:45:51 | "Hãy đọc file html và phân tích thử đoạn mẫu" | Đọc `reports/stress/statistics.json`, trích Total và sampler chậm nhất để phân tích mẫu. | `reports/stress/statistics.json` |
+| 97 | 2026-08-18 19:48:08 | "tôi muốn nghe chi tiết 43 lỗi kia" | Đọc raw `.jtl`, xác định 43 lỗi đều là transaction parent `Response was null`, response code rỗng. | `results/23127522_Stress_20260818.jtl` |
+| 98 | 2026-08-18 19:49:32 | "nhưng tại sao transaction dính lỗi đó" | Giải thích lỗi parent transaction do shutdown/transaction không hoàn tất, không phải backend HTTP failure vì child samplers vẫn `200`. | raw `.jtl` analysis |
+| 99 | 2026-08-18 19:53:06 | "Hãy cho tôi kịch bản về trước lúc bắt đầu, sau khi chạy và chạy xong nên review những gì" | Soạn checklist demo: chuẩn bị seed/monitoring, chạy test, mở report, kiểm tra `.jtl`, giải thích pass/fail. | demo checklist |
+| 100 | 2026-08-18 19:54:26 | "Có review gì về các thông số đã setup cho spike test không" | Review Spike config baseline/spike/startup/hold/shutdown, ưu/nhược và khi nào cần rerun sạch. | Spike review |
+| 101 | 2026-08-18 19:56:19 | Hỏi chi tiết Requests Summary, Statistics, Active Threads, Response Times, TPS, Errors | Giải thích chi tiết từng biểu đồ/chỉ số trong HTML report và cách liên hệ với kết luận performance. | report interpretation |
+| 102 | 2026-08-18 20:50:40 | "Giờ bạn hãy thực hiện task 2, viết plan để review" | Ở Plan Mode, viết plan Task 2: AI analysis + misinterpretation hunt, raw `.jtl`, thresholds, optimization classification. | plan Task 2 |
+| 103 | 2026-08-18 20:53:16 | "PLEASE IMPLEMENT THIS PLAN: Task 2 Review Plan..." | Implement Task 2: seed/verify, rerun Spike hợp lệ, trích metrics `.jtl`/`statistics.json`, viết analysis/review docs. | `docs/05-task2-ai-analysis-review.md` |
+| 104 | 2026-08-18 21:03:36 | "Hãy thực hiện nhiệm vụ 3 luôn đi" | Viết Task 3 CPT proposal: tiered pipeline, thresholds, flowchart, trade-off, CI skeleton. | `docs/06-task3-continuous-performance-testing.md` |
+| 105 | 2026-08-18 21:12:29 | "Đã có đủ dữ kiện để bạn viết main report..." | Ở Plan Mode, lập plan chi tiết cho main report tiếng Việt, cấu trúc Task 1/2/3 và assumptions. | proposed plan |
+| 106 | 2026-08-18 21:14:44 | "PLEASE IMPLEMENT THIS PLAN: Plan Viết Main Report..." | Tạo main report tiếng Việt, tổng hợp số liệu, workflow, monitoring, Task 2, Task 3, bug/issues. | `docs/07-main-report.md` |
+| 107 | 2026-08-18 21:17:29 | "Hãy chuyển đổi thành file pdf" | Xuất PDF lần đầu bằng `markdown-pdf`. | `docs/07-main-report.pdf` |
+| 108 | 2026-08-18 21:19:51 | "Hãy check lại, dường như main report pdf lỗi font chữ không phải UTF-8" | Xác nhận lỗi do PhantomJS, tạo pipeline Markdown → HTML UTF-8 → Chrome headless PDF. | `docs/07-main-report-utf8.pdf`, `docs/07-main-report.html` |
+| 109 | 2026-08-18 21:36:07 | "Hãy bỏ phần ai-logs ra report..." | Viết lại main report: bỏ Audit/Critique/ai-logs, thêm cách dùng 3 test plan và giải thích output kỹ hơn. | `docs/07-main-report.md`, `docs/07-main-report-v2.pdf` |
+| 110 | 2026-08-18 21:48:36 | "Hãy sửa Spike_Clean -> Spike. Và push lên github issues..." | Chuẩn hóa report từ Spike clean thành Spike, đổi path chính sang `results/...Spike_20260818.jtl`, chuẩn bị/đẩy GitHub Issues khi auth OK. | `docs/07-main-report.md`, GitHub Issues |
+| 111 | 2026-08-18 21:53:15 | "Bạn đã push lên github issues chưa?" | Trả lời ban đầu chưa push được vì `gh auth` báo Bad credentials; chỉ có draft issue local. | `docs/08-github-issues-draft.md` |
+| 112 | 2026-08-18 21:56:05 | "Bạn đã push lên github issues chưa?" | Kiểm tra lại auth, lúc này `gh` đã đăng nhập; tạo 5 GitHub Issues và cập nhật main report bằng link issue thật. | Issues #2-#6, `docs/07-main-report-v4.pdf` |
+| 113 | 2026-08-18 22:33:27 | "Hãy đưa continous_performance_testing.png vào file report.pdf và bỏ cái flow bằng mermaid code đi" | Thay Mermaid code bằng ảnh `evidence/continous_performance_testing.png` và xuất PDF mới có nhúng ảnh. | `docs/07-main-report-v5.pdf` |
+| 114 | 2026-08-18 22:38:42 | "Hãy ghi prompt log vào reports/appendix/prompt_logs" | Đang cập nhật appendix prompt log từ transcript thật, thêm các lượt Codex #30-#114. | `reports/appendix/prompt_logs.md` |
+| 115 | 2026-08-18 22:45:19 | "Và hãy thay đổi đường dẫn output của test-plans vào reports nếu có chạy lại" | Cập nhật listener output trong 3 `.jmx` sang `reports/results/*_gui.jtl`, đổi command non-GUI sang `reports/results/*.jtl`, cập nhật main report và xuất lại PDF. | `test-plans/*.jmx`, `command.md`, `reports/Main Report.md`, `reports/Main Report.pdf` |
+| 116 | 2026-08-18 22:49:00 | "Sau đó sửa lại AI Audit Report & Critique..." | Rewrite nội dung AI Audit Report và AI Critique từ template HW04 sang đúng HW05 Performance Testing, rồi xuất lại hai PDF appendix. | `reports/appendix/AI Audit Report.md`, `reports/appendix/AI Audit Report.pdf`, `reports/appendix/AI Critique.md`, `reports/appendix/AI Critique.pdf` |
+| 117 | 2026-08-18 22:58:16 | "Cuối cùng, tạo cho tôi agent skill. Tạo main report cả hai file thành tiếng anh" | Tạo Codex skill `hw05-performance-reporter`, validate skill, dịch Main Report sang tiếng Anh và xuất PDF tiếng Anh. | `C:\Users\ACER\.codex\skills\hw05-performance-reporter`, `reports/Main Report EN.md`, `reports/Main Report EN.pdf` |
+| 118 | 2026-08-18 23:04:36 | "Hãy làm README.md, trừ 5d ra khỏi bài này vì không có agent skill video, không cần endurance. Và push lên branch main đi" | Tạo `README.md` với self-assessment 95/100, ghi rõ trừ 5 vì thiếu agent-skill demo video, thêm skill vào repo và cập nhật link demo trong main report/PDF. | `README.md`, `agent-skill/hw05-performance-reporter`, `reports/Main_Report.md`, `reports/Main Report.pdf` |
+
 ## Trạng thái tại thời điểm chốt log
 
 | Hạng mục | Trạng thái |
 | --- | --- |
 | Giai đoạn 0 — môi trường | **Xong.** JMeter 5.6.3 + `jpgc-casutg` đã verify chạy thật trên Java 25; cây thư mục + `.gitignore` + branch `main` + MSSV đã chốt (commit `2b186c4`) |
 | Tài liệu API | **Xong.** 31 endpoint, 591 dòng (commit `4edb209`) |
-| Giai đoạn 1 — smoke test 9 endpoint | Chưa làm |
+| Giai đoạn 1 — smoke test 9 endpoint | **Xong.** `scripts/verify-seed.js` gọi thật 9 request Flow A trên dòng đầu/cuối CSV và nhánh lockout |
 | Giai đoạn 2 — CSV test data | **Xong.** `scripts/seed-data.js` + `scripts/verify-seed.js` (hàm/biến tiếng Anh, dữ liệu tiếng Việt có dấu), 4 file CSV (500 user, 30 user lockout, 204 sản phẩm, 2 coupon fixed), verify chạy thật 9 request Flow A → `TẤT CẢ ĐẠT`; `docs/02-test-data.md` |
-| Giai đoạn 3 — `.jmx` Load (bản master) | Chưa làm |
-| Giai đoạn 4 — chạy Load/Stress/Spike/Endurance | Chưa làm — **chưa có file `.jtl` nào** |
-| Giai đoạn 5 — phân tích + thresholds | Chưa làm |
-| Giai đoạn 6 — video demo, đóng gói | Chưa làm |
-| Số commit hiện tại | 3 (`95c2726`, `2b186c4`, `4edb209`) — Giai đoạn 2 chưa commit; mục 12 yêu cầu nhiều hơn, sẽ tăng theo từng giai đoạn |
+| Giai đoạn 3 — `.jmx` Load/Stress/Spike | **Xong.** Có `23127522_Load_20260817.jmx`, `23127522_Stress_20260818.jmx`, `23127522_Spike_20260818.jmx` |
+| Giai đoạn 4 — chạy Load/Stress/Spike | **Xong phần chính.** Có `.jtl` thô và HTML report cho Load, Stress, Spike; Endurance chưa có run riêng, chỉ có ngưỡng tạm đề xuất từ Stress |
+| Giai đoạn 5 — phân tích + thresholds | **Xong.** Có Task 2 analysis/review, Task 3 CPT proposal và main report tiếng Việt |
+| Giai đoạn 6 — video demo, đóng gói | **Đang hoàn thiện.** Đã có main report PDF, GitHub Issues #2-#6; video demo/link YouTube và zip cuối cần bổ sung |
+| GitHub Issues | **Đã tạo.** Issues #2-#6 trên `https://github.com/venncoder08/HW05_Performance_Testing/issues` |
 
 ## Nhận xét về độ tin cậy của AI trong phiên này
 
@@ -147,4 +245,3 @@ suy đoán):
   xuất trực tiếp các tool-call `Write`/`Edit` đã từng ghi vào file đó từ transcript `.jsonl` — cùng
   cơ chế bằng chứng dùng cho `extract_prompts.py`. Bài học: với file chưa commit, không có lưới an
   toàn nào ngoài chính transcript; luôn `Read` trước khi ghi đè, bất kể AI "nhớ" nội dung file đến đâu.
-
