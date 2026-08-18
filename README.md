@@ -22,7 +22,7 @@
 | Requirement | Max score | Self score | Evidence | Note |
 |---|---:|---:|---|---|
 | Task 1 - Load testing | 20 | 20 | `test-plans/23127522_Load_20260817.jmx`, `reports/results/23127522_Load_20260817.jtl`, `reports/load` | Complete. |
-| Task 1 - Stress testing | 20 | 20 | `test-plans/23127522_Stress_20260818.jmx`, `reports/results/23127522_Stress_20260818.jtl`, `reports/stress` | Complete. |
+| Task 1 - Stress testing | 20 | 20 | `test-plans/23127522_Stress_20260818.jmx`, `reports/results/23127522_Stress_20260818.zip`, `reports/stress` | Complete. The ZIP contains the full raw `.jtl` log. |
 | Task 1 - Spike testing | 20 | 20 | `test-plans/23127522_Spike_20260818.jmx`, `reports/results/23127522_Spike_20260818.jtl`, `reports/spike` | Complete after clean rerun. |
 | Task 2 - AI analysis + misinterpretation hunt | 10 | 10 | `reports/Main_Report.md`, `reports/appendix/AI Audit Report.md`, `reports/appendix/prompt_logs.md` | Raw `.jtl` values are used to correct AI misreadings. |
 | Task 3 - Continuous Performance Testing proposal | 10 | 10 | `reports/Main_Report.md`, `reports/evidence/continous_performance_testing.png` | Includes tiered CPT model, p95 regression rules, and trade-offs. |
@@ -62,6 +62,7 @@ Important review notes:
 
 - Load is a clean baseline with 0 failed samples.
 - Stress reaches 500 active threads. The 43 failures are transaction parent records with `Response was null`, not child HTTP backend failures.
+- The Stress raw log is submitted as `reports/results/23127522_Stress_20260818.zip` to keep every submission file under 20 MB. The archive contains the complete `23127522_Stress_20260818.jtl` file with all 147,593 rows.
 - Spike uses the clean rerun after reseeding data. The earlier Spike run with mass `401/403` is excluded from the final performance conclusion.
 
 ## Endurance Threshold
@@ -100,7 +101,7 @@ This is marked as an inferred local threshold, not a formally executed endurance
 | `reports/appendix/AI Critique.pdf` | AI critique PDF. |
 | `reports/appendix/prompt_logs.md` | Prompt log appendix. |
 | `test-plans/*.jmx` | Load, Stress, and Spike JMeter test plans. |
-| `reports/results/*.jtl` | Raw JMeter logs. |
+| `reports/results/*.jtl` and `reports/results/*.zip` | Raw JMeter logs. Stress is compressed as ZIP because the full `.jtl` is larger than 20 MB. |
 | `reports/load`, `reports/stress`, `reports/spike` | JMeter HTML report folders. |
 | `reports/evidence/*.png` | Monitoring and hardware screenshots. |
 | `agent-skill/hw05-performance-reporter` | Reusable Codex skill for this HW05 JMeter reporting workflow. |
@@ -140,6 +141,9 @@ jmeter -n ^
   -t test-plans\23127522_Stress_20260818.jmx ^
   -l reports\results\23127522_Stress_20260818.jtl ^
   -e -o reports\stress
+
+powershell Compress-Archive -Path reports\results\23127522_Stress_20260818.jtl -DestinationPath reports\results\23127522_Stress_20260818.zip -Force
+del /q reports\results\23127522_Stress_20260818.jtl
 ```
 
 Run Spike:

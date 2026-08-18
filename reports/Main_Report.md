@@ -15,7 +15,7 @@ Key results:
 | Scenario | Main raw `.jtl` | HTML report | Raw rows | Max active threads | Total P95 | Total P99 | Throughput |
 |---|---|---|---:|---:|---:|---:|---:|
 | Load | `reports/results/23127522_Load_20260817.jtl` | `reports/load` | 5,000 | 81 | 19 ms | 30 ms | 33.17 req/s |
-| Stress | `reports/results/23127522_Stress_20260818.jtl` | `reports/stress` | 147,593 | 500 | 1,635 ms | 5,163.87 ms | 290.01 req/s |
+| Stress | `reports/results/23127522_Stress_20260818.zip` | `reports/stress` | 147,593 | 500 | 1,635 ms | 5,163.87 ms | 290.01 req/s |
 | Spike | `reports/results/23127522_Spike_20260818.jtl` | `reports/spike` | 32,850 | 300 | 448 ms | 794 ms | 157.21 req/s |
 
 The Load test is a clean baseline with 0 errors. The Stress test shows a clear latency increase when the load reaches 500 active threads, but it does not show mass child HTTP failures. The Spike test is valid after reseeding the data; the earlier Spike run is excluded from the final conclusion because it contained many `401/403` errors caused by dirty data/login state.
@@ -212,7 +212,7 @@ jmeter -n ^
 |---|---|
 | Test plan | `test-plans/23127522_Stress_20260818.jmx` |
 | Listener/report view | Summary Report |
-| Raw result | `reports/results/23127522_Stress_20260818.jtl` |
+| Raw result | `reports/results/23127522_Stress_20260818.zip` |
 | HTML report | `reports/stress/index.html` |
 | Screenshot | `reports/evidence/23127522_Stress_20260818.png` |
 
@@ -233,7 +233,12 @@ jmeter -n ^
   -Jsummariser.interval=10 ^
   -Jsummariser.out=true ^
   -Jsummariser.log=true
+
+powershell Compress-Archive -Path reports\results\23127522_Stress_20260818.jtl -DestinationPath reports\results\23127522_Stress_20260818.zip -Force
+del /q reports\results\23127522_Stress_20260818.jtl
 ```
+
+The submitted Stress raw result is a ZIP archive to keep the file below 20 MB. It still contains the complete raw `.jtl` file with all 147,593 sample rows, so the data quality is unchanged.
 
 **Ultimate Thread Group configuration explanation:**
 
@@ -377,7 +382,7 @@ Evidence:
 | Scenario | Screenshot | Raw result | Report |
 |---|---|---|---|
 | Load | `reports/evidence/23127522_Load_20260817.png` | `reports/results/23127522_Load_20260817.jtl` | `reports/load/index.html` |
-| Stress | `reports/evidence/23127522_Stress_20260818.png` | `reports/results/23127522_Stress_20260818.jtl` | `reports/stress/index.html` |
+| Stress | `reports/evidence/23127522_Stress_20260818.png` | `reports/results/23127522_Stress_20260818.zip` | `reports/stress/index.html` |
 | Spike | `reports/evidence/23127522_Spike_20260818.png` | `reports/results/23127522_Spike_20260818.jtl` | `reports/spike/index.html` |
 
 Demo video: https://youtu.be/GPZ94lcdWDI?si=GJrB3ISKFlGie_b2

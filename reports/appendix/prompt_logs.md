@@ -37,9 +37,9 @@ OUT=turns.json python scripts/extract_prompts.py
 Script Claude lọc bỏ những entry **không phải người gõ**: `tool_result`, `<system-reminder>`,
 `<local-command-stdout>`, các slash command, và thông báo lỗi API. Sau khi lọc phần Claude còn
 **29 lượt prompt thật của người dùng**. Phần Codex được bổ sung từ transcript local và có thêm
-**89 lượt**, nâng tổng số prompt được ghi trong appendix này lên **118 lượt**.
+**90 lượt**, nâng tổng số prompt được ghi trong appendix này lên **119 lượt**.
 
-Phạm vi thời gian của phần log này: **2026-08-16 17:03:42 → 2026-08-18 23:04:36**. Phần đầu
+Phạm vi thời gian của phần log này: **2026-08-16 17:03:42 → 2026-08-18 23:18:31**. Phần đầu
 được trích từ transcript Claude Code, phần bổ sung được đối chiếu từ transcript Codex local
 `C:\Users\ACER\.codex\sessions\2026\08\17\rollout-2026-08-17T19-46-47-01a00fc2-9ae4-7792-87cb-35bef0bc8d17.jsonl`.
 
@@ -200,6 +200,7 @@ Nguồn kiểm chứng: transcript Codex local `C:\Users\ACER\.codex\sessions\20
 | 116 | 2026-08-18 22:49:00 | "Sau đó sửa lại AI Audit Report & Critique..." | Rewrite nội dung AI Audit Report và AI Critique từ template HW04 sang đúng HW05 Performance Testing, rồi xuất lại hai PDF appendix. | `reports/appendix/AI Audit Report.md`, `reports/appendix/AI Audit Report.pdf`, `reports/appendix/AI Critique.md`, `reports/appendix/AI Critique.pdf` |
 | 117 | 2026-08-18 22:58:16 | "Cuối cùng, tạo cho tôi agent skill. Tạo main report cả hai file thành tiếng anh" | Tạo Codex skill `hw05-performance-reporter`, validate skill, dịch Main Report sang tiếng Anh và xuất PDF tiếng Anh. | `C:\Users\ACER\.codex\skills\hw05-performance-reporter`, `reports/Main Report EN.md`, `reports/Main Report EN.pdf` |
 | 118 | 2026-08-18 23:04:36 | "Hãy làm README.md, trừ 5d ra khỏi bài này vì không có agent skill video, không cần endurance. Và push lên branch main đi" | Tạo `README.md` với self-assessment 95/100, ghi rõ trừ 5 vì thiếu agent-skill demo video, thêm skill vào repo và cập nhật link demo trong main report/PDF. | `README.md`, `agent-skill/hw05-performance-reporter`, `reports/Main_Report.md`, `reports/Main Report.pdf` |
+| 119 | 2026-08-18 23:18:31 | "Hãy làm sao giúp tôi mà nó <20 MB mà không ảnh hưởng đến chất lượng" | Giữ full Stress raw `.jtl` trong ZIP để giảm kích thước dưới 20 MB, cập nhật README/Main Report và PDF để tham chiếu `23127522_Stress_20260818.zip`. | `reports/results/23127522_Stress_20260818.zip`, `README.md`, `reports/Main_Report.md`, `reports/Main Report.pdf` |
 
 ## Trạng thái tại thời điểm chốt log
 
